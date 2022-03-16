@@ -165,12 +165,22 @@ function mode(arr) {
     obj[num]++
     return obj
   }, {});
+  console.log(count);
   let result = count[arr[0]];
+  let most = [arr[0].toString()];
   for (let i in count) {
     if (count[i] > result) {
       result = count[i];
-      return i;
+      most.splice(0,1,i.toString());
     };
   };
-  return arr[0];
+  console.log(most);
+  for (let i in count) {
+    if (!most.includes(i.toString())) {
+      if (count[i] === result) {
+        most.push(i);
+      };
+    };
+  };
+  return most;
 };
